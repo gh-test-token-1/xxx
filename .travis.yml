@@ -4,17 +4,3 @@ language: node_js
 node_js:
   - 14
 
-jobs:
-  include:
-    - stage: build_and_test
-      script:
-        - git log -n 1 --format="%H"
-        - git log -n 1 --format="%P"
-        - git log
-
-
-  
-
-stages:
-  - name: build_and_test
-    if: branch = main
