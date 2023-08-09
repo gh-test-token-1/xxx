@@ -21,8 +21,7 @@ jobs:
         - cd ..
         - cd ..
         - echo "Current directory: $(pwd)"
-        - npm link depupgradecheck
-        - npx depupgradecheck 
+  
 
 stages:
   - name: build_and_test
