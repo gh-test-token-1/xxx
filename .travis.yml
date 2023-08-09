@@ -16,7 +16,6 @@ jobs:
         - cd npm_packages_i_created/depUpgradeChecker
         - echo "Current directory: $(pwd)"
         - npm install
-        - npm config set prefix $TRAVIS_BUILD_DIR/npm_packages_i_created/depUpgradeChecker/.npm-global
         - npm link
         - cd ..
         - cd ..
