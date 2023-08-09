@@ -10,7 +10,6 @@ before_install:
 
 before_script:
   - ls -l
-  - npm i -g npx
   - npm install
   - npm link
   - cd ..
