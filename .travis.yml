@@ -1,5 +1,4 @@
-os: darwin
-arch: any
+
 
 language: node_js
 node_js:
