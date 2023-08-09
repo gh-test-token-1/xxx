@@ -6,4 +6,5 @@ before_install:
   - "cd npm_packages_i_created/depUpgradeChecker"
 before_script:
   - "ls -l"
+  - "npm install"
 
