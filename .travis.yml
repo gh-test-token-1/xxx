@@ -3,7 +3,7 @@ arch: any
 
 language: node_js
 node_js:
-  - node
+  - 7
 
 before_install:
   - pwd
