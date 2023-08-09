@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "7"
 before_install:
-  - "cd ../npm_packages_i_created/depUpgradeChecker && npm install && npm link"
+  - "pwd"
 before_script:
-  - "export PATH=$HOME/.meteor:$PATH"
+  - "ls -l"
+
