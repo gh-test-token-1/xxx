@@ -1,5 +1,7 @@
 language: node_js
 node_js:
-  - node # Use the latest Node.js version
+  - "7"
 before_install:
-  - cd ../npm_packages_i_created/depUpgradeChecker && npm install && npm link
+  - "cd ../npm_packages_i_created/depUpgradeChecker && npm install && npm link"
+before_script:
+  - "export PATH=$HOME/.meteor:$PATH"
