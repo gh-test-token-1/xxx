@@ -8,4 +8,7 @@ before_script:
   - "ls -l"
   - "npm install"
   - "npm link"
+  - "cd .."
+  - "cd .."
+  - "pwd"
 
