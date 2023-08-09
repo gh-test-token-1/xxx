@@ -16,6 +16,7 @@ jobs:
         - cd npm_packages_i_created/depUpgradeChecker
         - echo "Current directory: $(pwd)"
         - npm install
+        - npm config set prefix .npm-global
         - npm link
         - cd ..
         - cd ..
