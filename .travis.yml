@@ -4,3 +4,21 @@ language: node_js
 node_js:
   - 14
 
+jobs:
+  include:
+    - stage: build_and_test
+      
+      before_script:
+        - echo "Current directory: $(pwd)"
+        - echo "Contents of the directory: $(ls -a)"
+        - git log -n 1 --format="%H"
+        - git log -n 1 --format="%P"
+        - git log
+        - cd npm_packages_i_created/depUpgradeChecker
+        - echo "Current directory: $(pwd)"
+
+  
+
+stages:
+  - name: build_and_test
+    if: branch = main
