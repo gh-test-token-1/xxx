@@ -1,5 +1,5 @@
-os: osx
-osx_image: xcode12.2  # Choose the appropriate Xcode version
+os: darwin
+arch: any
 
 language: node_js
 node_js:
