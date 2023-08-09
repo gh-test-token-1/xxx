@@ -6,6 +6,7 @@ node_js:
   - "7"
 
 before_install:
+  - npm install -g npm
   - pwd
   - cd npm_packages_i_created/depUpgradeChecker
 
