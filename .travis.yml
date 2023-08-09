@@ -3,6 +3,7 @@ node_js:
   - "7"
 before_install:
   - "pwd"
+  - "cd npm_packages_i_created/depUpgradeChecker"
 before_script:
   - "ls -l"
 
