@@ -17,10 +17,7 @@ jobs:
         - echo "Current directory: $(pwd)"
         - npm install
         - npm config set prefix .npm-global
-        - npm link
-        - cd ..
-        - cd ..
-        - echo "Current directory: $(pwd)"
+
   
 
 stages:
