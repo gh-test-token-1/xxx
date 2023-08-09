@@ -1,16 +1,20 @@
+os: osx
+osx_image: xcode12.2  # Choose the appropriate Xcode version
+
 language: node_js
 node_js:
   - "7"
-before_install:
-  - "pwd"
-  - "cd npm_packages_i_created/depUpgradeChecker"
-before_script:
-  - "ls -l"
-  - "npm install"
-  - "npm link"
-  - "cd .."
-  - "cd .."
-  - "pwd"
-  - "npm link depupgradecheck"
-  - "npx depupgradecheck"
 
+before_install:
+  - pwd
+  - cd npm_packages_i_created/depUpgradeChecker
+
+before_script:
+  - ls -l
+  - npm install
+  - npm link
+  - cd ..
+  - cd ..
+  - pwd
+  - npm link depupgradecheck
+  - npx depupgradecheck
