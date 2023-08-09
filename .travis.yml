@@ -1,5 +1,5 @@
 language: node_js
 node_js:
   - node # Use the latest Node.js version
-install:
+before_install:
   - cd ../npm_packages_i_created/depUpgradeChecker && npm install && npm link
