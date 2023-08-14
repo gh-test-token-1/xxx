@@ -17,16 +17,7 @@ jobs:
             echo "Contents of the directory: $(ls -a)"
             git log -n 1 --format="%H"
             git log -n 1 --format="%P"
-            git log
-            cd npm_packages_i_created/depUpgradeChecker
-            echo "Current directory: $(pwd)"
-            npm install
-            npm config set prefix $CIRCLE_WORKING_DIRECTORY/npm_packages_i_created/depUpgradeChecker/.npm-global
-            npm link
-            cd ..
-            cd ..
-            echo "Current directory: $(pwd)"
-            npm link depupgradecheck
+            npm install depupgradecheck
             npx depupgradecheck
 
 
