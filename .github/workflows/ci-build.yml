@@ -20,5 +20,8 @@ jobs:
 
       # Skip CI for commits with a "skip" keyword in the commit message
       - name: Skip CI if commit message contains "skip"
-        if: "contains(github.event.head_commit.message, 'skip') != true"
+        if: "contains(github.event.head_commit.message, 'Merge') != true"
+        run: exit 0
+      - name: Skip CI if commit message contains "bump"
+        if: "contains(github.event.head_commit.message, 'Bump') != true"
         run: exit 0
