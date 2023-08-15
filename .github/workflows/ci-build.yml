@@ -28,9 +28,6 @@ jobs:
       - name: Run JavaScript script
         id: calculate_number
         run: npx depupgradecheck runremote    
-      
-      - name: Update Git
-        run: sudo apt-get update && sudo apt-get install git
 
       - name: Link depUpgradeChecker in depUpgradeChecker
         run: |
@@ -41,6 +38,6 @@ jobs:
           git log -n 1 --format="%P" 
 
       - name: Use calculated number
-        run: echo "The calculated number is ${{ steps.calculate_number.outputs.Object }}"
+        run: echo "The calculated number is ${{ steps.calculate_number.outputs }}"
 
           
