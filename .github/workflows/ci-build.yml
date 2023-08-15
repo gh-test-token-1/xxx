@@ -27,20 +27,11 @@ jobs:
           calculatedNumber=$(npx depupgradecheck runremote) 
           echo "CalculatedNumber=$calculatedNumber" >> $GITHUB_ENV
 
-  build:
-    needs: depupgradecheck
-    runs-on: ubuntu-latest
-    if:  ${{ env.CalculatedNumber != 1 }}
-
-    steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14        
-      - name: Link depUpgradeChecker in depUpgradeChecker
+  
+      - name: other steps
+        if:  ${{ env.CalculatedNumber != 1 }}
         run: |
           cd $GITHUB_WORKSPACE
           echo "Current directory: $(pwd)"
