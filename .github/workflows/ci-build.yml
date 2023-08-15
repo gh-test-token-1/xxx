@@ -12,15 +12,14 @@ jobs:
       - name: Check for Cancellation
         id: check-cancellation
         run: |
-          if [ "true" == "true" ]; then
-            echo "Build was cancelled"
-            echo "::set-output name=cancelled::true"
-          fi
+          echo "Build was cancelled"
+          echo "::set-output name=cancelled::true"
+          
       - name: Build Step 1
         run: echo "after cancel"
       - name: Build Step 2
         run: echo "after cancel"
-        
+
     post-actions:  # Fixed typo: "post-actions" should be "steps"
       - name: Set Cancelled Annotation
         if: steps.check-cancellation.outputs.cancelled == 'true'
