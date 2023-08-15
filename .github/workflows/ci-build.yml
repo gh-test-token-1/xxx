@@ -13,7 +13,7 @@ jobs:
         id: check-cancellation
         run: |
           echo "Build was cancelled"
-          echo "::set-output name=cancelled::true"
+          echo "cancelled::true" >> $GITHUB_OUTPUT
           
       - name: Build Step 1
         run: echo "after cancel"
@@ -24,4 +24,5 @@ jobs:
         if: steps.check-cancellation.outputs.cancelled == 'true'
         run: |
           echo "Build was cancelled" >> cancelled_annotation.txt
-          echo "::set-output name=commentFilePath::cancelled_annotation.txt"
+          echo "commentFilePath::cancelled_annotation.txt" >> $GITHUB_STATE
+          echo "commentFilePath::cancelled_annotation.txt" >> $GITHUB_OUTPUT
