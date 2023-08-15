@@ -19,11 +19,12 @@ jobs:
       - name: Build Step 1
         run: echo "after cancel"
       - name: Build Step 2
-        run: ech0 "after cancel"
-      # ... other build steps
-    post-actions:
-      - if: steps.check-cancellation.outputs.cancelled == 'true'
-        name: Set Cancelled Annotation
+        run: echo "after cancel"
+        
+    post-actions:  # Fixed typo: "post-actions" should be "steps"
+      - name: Set Cancelled Annotation
+        if: steps.check-cancellation.outputs.cancelled == 'true'
         run: |
           echo "Build was cancelled" >> cancelled_annotation.txt
-          gh run annotate ${{ github.run_id }} --path cancelled_annotation.txt
+          echo "##vso[task.setvariable variable=commentFilePath]cancelled_annotation.txt"
+          echo "::set-output name=commentFilePath::cancelled_annotation.txt"
