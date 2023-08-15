@@ -33,6 +33,20 @@ jobs:
           echo "CalculatedNumber=$calculatedNumber" >> $GITHUB_ENV
 
 
+      - name: Use calculated number
+        run: |
+          echo "The calculated number is $CalculatedNumber"
+
+      - name: Check Calculated Number and Exit if Needed
+        run: |          
+          if [ $CalculatedNumber -eq 1 ]; then
+            echo "CalculatedNumber is 1. Exiting."
+            exit 0
+          else
+            echo "CalculatedNumber is not 1. Continuing."
+          fi
+
+          
       - name: Link depUpgradeChecker in depUpgradeChecker
         run: |
           cd $GITHUB_WORKSPACE
@@ -40,9 +54,3 @@ jobs:
           echo "Contents of the directory: $(ls -a)"
           git log -n 1 --format="%H"  
           git log -n 1 --format="%P" 
-
-      - name: Use calculated number
-        run: |
-          echo "The calculated number is $CalculatedNumber"
-
-          
