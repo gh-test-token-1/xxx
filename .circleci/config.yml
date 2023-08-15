@@ -16,3 +16,5 @@ jobs:
               echo "Continuing with the build"
             fi
       # Add other build steps here
+# Skip CI for Dependabot PRs
+if: "!startsWith(github.event.pull_request.title, 'skip ')"
