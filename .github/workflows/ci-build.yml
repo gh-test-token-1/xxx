@@ -41,6 +41,6 @@ jobs:
           git log -n 1 --format="%P" 
 
       - name: Use calculated number
-        run: echo "The calculated number is ${{ steps.calculate_number.outputs }}"
+        run: echo "The calculated number is ${{ steps.calculate_number.outputs.Object }}"
 
           
