@@ -1,18 +1,28 @@
-name: CI
+version: 2.1
 
-on:
-  push:
-    branches:
-      - main  # Modify this to match your repository's default branch
+orbs:
+  node: circleci/node@5.0.2
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build_and_test: 
+    executor: node/default 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      # Add other build steps here
+      - checkout
 
-# Skip CI for commits with a "skip" keyword in the commit message
-if: "!contains(github.event.head_commit.message, 'skip')"
+      - run:
+          name: Link depUpgradeChecker in depUpgradeChecker
+          command: |
+ 
+            echo "Current directory: $(pwd)"
+            echo "Contents of the directory: $(ls -a)"
+            git log -n 1 --format="%H"
+            git log -n 1 --format="%P"
+            npm install depupgradecheck
+            npx depupgradecheck
+
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build_and_test
