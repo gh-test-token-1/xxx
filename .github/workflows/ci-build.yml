@@ -37,14 +37,11 @@ jobs:
         run: |
           echo "The calculated number is $CalculatedNumber"
 
-      - name: Check Calculated Number and Exit if Needed
-        run: |          
-          if [ $CalculatedNumber -eq 1 ]; then
-            echo "CalculatedNumber is 1. Exiting."
-            exit 0
-          else
-            echo "CalculatedNumber is not 1. Continuing."
-          fi
+      - name: Check Condition and Exit
+        if:  $CalculatedNumber == 1 
+        run: |
+          echo "CalculatedNumber is 1. Exiting."
+          exit 0
 
           
       - name: Link depUpgradeChecker in depUpgradeChecker
