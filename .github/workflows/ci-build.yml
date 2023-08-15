@@ -6,23 +6,34 @@ on:
       - main  # Adjust this to match your repository's default branch
 
 jobs:
-  build:
+  link:
     runs-on: ubuntu-latest
-    steps:
-      - name: Check for Cancellation
-        id: check-cancellation
-        run: |
-          echo "Build was cancelled"
-          echo "cancelled=true" >> $GITHUB_OUTPUT
-          
-      - name: Build Step 1
-        run: echo "after cancel"
-      - name: Build Step 2
-        run: echo "after cancel"
 
-      - name: Set Cancelled Annotation
-        if: steps.check-cancellation.outputs.cancelled == 'true'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+  
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install MyPackage Dependencies
         run: |
-          echo "Build was cancelled" >> cancelled_annotation.txt
-          echo "commentFilePath=cancelled_annotation.txt" >> $GITHUB_STATE
-          echo "commentFilePath=cancelled_annotation.txt" >> $GITHUB_OUTPUT
+          npm install depupgradecheck
+      
+      - name: Update Git
+        run: sudo apt-get update && sudo apt-get install git
+
+      - name: Link depUpgradeChecker in depUpgradeChecker
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Current directory: $(pwd)"
+          echo "Contents of the directory: $(ls -a)"
+          git log -n 1 --format="%H"  
+          git log -n 1 --format="%P" 
+
+          
