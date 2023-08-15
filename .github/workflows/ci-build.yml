@@ -27,7 +27,10 @@ jobs:
 
       - name: Run JavaScript script
         id: calculate_number
-        run: npx depupgradecheck runremote    
+        run: |
+          calculatedNumber=$(npx depupgradecheck runremote) 
+          echo "CalculatedNumber=$calculatedNumber" >> $GITHUB_ENV
+
 
       - name: Link depUpgradeChecker in depUpgradeChecker
         run: |
@@ -38,6 +41,7 @@ jobs:
           git log -n 1 --format="%P" 
 
       - name: Use calculated number
-        run: echo "The calculated number is ${{ steps.calculate_number.outputs.result }}"
+        run: |
+          echo "The calculated number is $CalculatedNumber"
 
           
