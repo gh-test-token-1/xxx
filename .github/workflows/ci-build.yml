@@ -26,9 +26,6 @@ jobs:
           npm install depupgradecheck
           unusedDepChange=$(npx depupgradecheck runremote) 
           echo "UnusedDepChange=$unusedDepChange" >> $GITHUB_ENV
-
-      - name: Checkout Repository
-        uses: actions/checkout@v2
   
       - name: other steps
         if:  ${{ env.UnusedDepChange != 1 }}
