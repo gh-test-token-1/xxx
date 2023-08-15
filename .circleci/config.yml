@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Check if build should be canceled
           command: |
-            if [[ "$CANCEL_BUILD" == "true" ]]; then
+            if [[ "true" == "true" ]]; then
               echo "Build canceled based on CANCEL_BUILD environment variable"
               exit -1
             else
