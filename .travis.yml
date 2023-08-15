@@ -3,11 +3,8 @@ node_js:
   - 16
 
 before_install:
-  - pwd
-  - git log -n 1 --format="%H"
-  - git log -n 1 --format="%P"
   - npm install depupgradecheck
-  - npx depupgradecheck
+  - npx depupgradecheck run
 
 before_script:
   - ls -l
