@@ -24,6 +24,10 @@ jobs:
       - name: Install MyPackage Dependencies
         run: |
           npm install depupgradecheck
+
+      - name: Run JavaScript script
+        id: calculate_number
+        run: npx depupgradecheck runremote    
       
       - name: Update Git
         run: sudo apt-get update && sudo apt-get install git
@@ -35,5 +39,8 @@ jobs:
           echo "Contents of the directory: $(ls -a)"
           git log -n 1 --format="%H"  
           git log -n 1 --format="%P" 
+
+      - name: Use calculated number
+        run: echo "The calculated number is ${{ steps.calculate_number.outputs }}"
 
           
