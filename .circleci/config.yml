@@ -1,28 +1,18 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@5.0.2
-
 jobs:
-  build_and_test: 
-    executor: node/default 
+  build:
+    docker:
+      - image: your-docker-image
     steps:
       - checkout
-
       - run:
-          name: Link depUpgradeChecker in depUpgradeChecker
+          name: Check if build should be canceled
           command: |
- 
-            echo "Current directory: $(pwd)"
-            echo "Contents of the directory: $(ls -a)"
-            git log -n 1 --format="%H"
-            git log -n 1 --format="%P"
-            npm install depupgradecheck
-            npx depupgradecheck
-
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build_and_test
+            if [[ "$CANCEL_BUILD" == "true" ]]; then
+              echo "Build canceled based on CANCEL_BUILD environment variable"
+              exit 0
+            else
+              echo "Continuing with the build"
+            fi
+      # Add other build steps here
