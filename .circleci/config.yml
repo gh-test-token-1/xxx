@@ -1,20 +1,18 @@
-version: 2.1
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Modify this to match your repository's default branch
 
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.8
+    runs-on: ubuntu-latest
     steps:
-      - checkout
-      - run:
-          name: Check if build should be canceled
-          command: |
-            if [[ "true" == "true" ]]; then
-              echo "Build canceled based on CANCEL_BUILD environment variable"
-              exit -1
-            else
-              echo "Continuing with the build"
-            fi
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
       # Add other build steps here
-# Skip CI for Dependabot PRs
-if: "!startsWith(github.event.pull_request.title, 'skip ')" 
+
+# Skip CI for commits with a "skip" keyword in the commit message
+if: "!contains(github.event.head_commit.message, 'skip')"
