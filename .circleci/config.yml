@@ -25,4 +25,4 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build_and_test
+      - build_and_test 
