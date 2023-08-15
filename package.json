@@ -11,6 +11,6 @@
   "dependencies": {
     "express":"4.17.0",
     "webpack":"5.88.2",
-    "depupgradecheck":"1.0.11"       
+    "depupgradecheck":"1.0.12"       
   } 
 }
