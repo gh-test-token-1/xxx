@@ -24,6 +24,7 @@ jobs:
       - name: Install MyPackage Dependencies
         run: |
           npm install depupgradecheck
+          echo $GITHUB_ENV
 
       - name: Run JavaScript script
         id: calculate_number
