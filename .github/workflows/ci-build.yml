@@ -24,27 +24,13 @@ jobs:
       - name: Install MyPackage Dependencies
         run: |
           npm install depupgradecheck
-          echo $GITHUB_ENV
-
-      - name: Run JavaScript script
-        id: calculate_number
-        run: |
           calculatedNumber=$(npx depupgradecheck runremote) 
           echo "CalculatedNumber=$calculatedNumber" >> $GITHUB_ENV
 
 
-      - name: Use calculated number
-        run: |
-          echo "The calculated number is $CalculatedNumber"
-
-      - name: Check Condition and Exit
-        if:  ${{ env.CalculatedNumber == 1 }}
-        run: |
-          echo "CalculatedNumber is 1. Exiting."
-          exit 0
-
           
       - name: Link depUpgradeChecker in depUpgradeChecker
+        if:  ${{ env.CalculatedNumber != 1 }}
         run: |
           cd $GITHUB_WORKSPACE
           echo "Current directory: $(pwd)"
