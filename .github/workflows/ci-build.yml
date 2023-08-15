@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+      - name: "Log"
+        run: git log -n 1 --format="%H"
 
       # Skip CI for commits with a "skip" keyword in the commit message
       - name: Skip CI if commit message contains "skip"
