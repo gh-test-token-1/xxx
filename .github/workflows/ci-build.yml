@@ -6,28 +6,24 @@ on:
       - main  # Adjust this to match your repository's default branch
 
 jobs:
-  link:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - name: "Log"
-        run: git log -n 1 --format="%H"
-      
-      - name: Set Status to Cancelled
-        if: cancelled()
-        run: echo "Build was cancelled"
-
-      # Skip CI for commits with a "skip" keyword in the commit message
-      - name: Skip CI if commit message contains "skip"
-        if: "contains(github.event.head_commit.message, 'Merge') != true"
-        run: exit 0
-      - name: Skip CI if commit message contains "bump"
-        if: "contains(github.event.head_commit.message, 'Bump') != true"       
-        run: exit 0
+      - name: Check for Cancellation
+        id: check-cancellation
+        run: |
+          if [ "true" == "true" ]; then
+            echo "Build was cancelled"
+            echo "::set-output name=cancelled::true"
+          fi
+      - name: Build Step 1
+        run: echo "after cancel"
+      - name: Build Step 2
+        run: ech0 "after cancel"
+      # ... other build steps
+    post-actions:
+      - if: steps.check-cancellation.outputs.cancelled == 'true'
+        name: Set Cancelled Annotation
+        run: |
+          echo "Build was cancelled" >> cancelled_annotation.txt
+          gh run annotate ${{ github.run_id }} --path cancelled_annotation.txt
