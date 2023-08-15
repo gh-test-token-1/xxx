@@ -11,7 +11,7 @@ jobs:
           command: |
             if [[ "$CANCEL_BUILD" == "true" ]]; then
               echo "Build canceled based on CANCEL_BUILD environment variable"
-              exit 0
+              exit -1
             else
               echo "Continuing with the build"
             fi
