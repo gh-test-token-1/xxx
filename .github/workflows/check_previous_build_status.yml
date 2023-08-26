@@ -12,12 +12,10 @@ jobs:
         uses: actions/github-script@v5
         with:
           fetch-depth: 0
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const previousStatus = await github.repos.getCombinedStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.sha
-            });
-
-            console.log(`Previous combined status: ${previousStatus.data.state}`);
+          
+      - name: Use the secret
+        run: |
+            echo "My secret: ${{ secrets.MY_SECRET }}"
+            previous_commit=$(git rev-parse HEAD^1)
+            status_url="https://api.github.com/repos/n66854789/tested-upgrade-n66854789/commits/${previous_commit}/statuses"
+            statuses=$(curl -s $status_url)
