@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Check Previous Build Status
         id: check_status
-        uses: actions/github-script@v5
+        uses:  actions/checkout@v2
         with:
           fetch-depth: 0
           
