@@ -1,0 +1,22 @@
+name: Check Previous Build Status
+
+on: [push]
+
+jobs:
+  check_previous_status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Previous Build Status
+        id: check_status
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const previousStatus = await github.repos.getCombinedStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha
+            });
+
+            console.log(`Previous combined status: ${previousStatus.data.state}`);
