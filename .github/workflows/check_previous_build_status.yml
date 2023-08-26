@@ -11,6 +11,7 @@ jobs:
         id: check_status
         uses: actions/github-script@v5
         with:
+          fetch-depth: 0
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const previousStatus = await github.repos.getCombinedStatus({
