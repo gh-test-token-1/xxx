@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "depupgradecheck": "1.0.18",
-    "express": "4.17.0EEEEE",
+    "express": "4.17.0u",
     "node-fetch": "^3.3.2",
     "webpack": "5.88.1"
   },
