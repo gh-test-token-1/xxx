@@ -44,3 +44,4 @@ jobs:
           echo "Contents of the directory: $(ls -a)"
           git log -n 1 --format="%H"  
           git log -n 1 --format="%P" 
+          npm install
