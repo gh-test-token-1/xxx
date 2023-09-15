@@ -24,7 +24,7 @@ jobs:
       - name: Install MyPackage Dependencies
         run: |
           npm install depupgradecheck
-          unusedDepChange=$(npx depupgradecheck runremote) 
+          unusedDepChange=$(npx dep-ci-skip runremote) 
           echo "UnusedDepChange=$unusedDepChange" >> $GITHUB_ENV
   
       - name: other steps
