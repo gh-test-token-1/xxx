@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "esm": "^3.2.25",
-    "dep-ci-skip": "1.0.1"
+    "dep-ci-skip": "1.0.2"
   }
 }
