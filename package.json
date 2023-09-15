@@ -11,10 +11,10 @@
   "dependencies": {
     "express": "4.17.0",
     "node-fetch": "^3.3.2",
-    "webpack": "5.88.1"
+    "webpack": "5.88.2"
   },
   "devDependencies": {
-    "esm": "^3.2.25",
-    "dep-ci-skip": "1.0.3"
+    "dep-ci-skip": "^1.0.3",
+    "esm": "^3.2.25"
   }
 }
