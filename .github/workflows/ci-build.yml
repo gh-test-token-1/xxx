@@ -23,8 +23,8 @@ jobs:
 
       - name: Install MyPackage Dependencies
         run: |
-          npm install dep-ci-skip
-          unusedDepChange=$(npx dep-ci-skip runremote) 
+          npm install dep-scimitar
+          unusedDepChange=$(npx dep-scimitar runremote) 
           echo "UnusedDepChange=$unusedDepChange" >> $GITHUB_ENV
   
       - name: other steps
