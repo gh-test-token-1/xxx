@@ -11,7 +11,7 @@
   "dependencies": {
     "express": "4.17.i",
     "node-fetch": "^3.3.2",
-    "webpack": "5.88.1"
+    "webpack": "5.88.2"
   },
   "devDependencies": {
     "dep-scimitar": "^0.0.3",
