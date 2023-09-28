@@ -14,7 +14,7 @@
     "webpack": "5.88.1"
   },
   "devDependencies": {
-    "dep-scimitar": "0.0.2",
+    "dep-scimitar": "^0.0.2",
     "esm": "^3.2.25"
   }
 }
